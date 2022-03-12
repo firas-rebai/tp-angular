@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card border-primary mb-3">
+        <div class="card-header bg-primary text-white">About component</div>
+        <div class="card-body">
+            <ul>
+                <li>Name : {{info.name}}</li>
+                <li>Email : {{info.email}}</li>
+                <li>Tel : {{info.tel}}</li>
+            </ul>
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <input type="text" class="from-control" [(ngModel)]="Comment.message">
+                </div>
+                <button class="btn btn-primary" (click)="addComment()" [disabled]="newComment">
+            Add Comment
+          </button>
+            </div>
+            <div *ngIf="comments.length>0 ; else noComments">
+                <h3>Messages</h3>
+                <ul class="list-group">
+                    <li *ngFor="let c of comments" class="list-group-item d-flex justify-content-between align-items-center">
+                        {{c.message}}<span class="badge badge-secondary badge-pill">{{c.date | date:'HH:mm:ss'}}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <ng-template #noComments>
+                <p>No Comments</p>
+            </ng-template>
+        </div>
+
+    </div>
+</div>
